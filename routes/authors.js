@@ -4,8 +4,13 @@ const router = express.Router();
 
 const authorsController = require("../controllers/authors.controller");
 
-/* GET users listing. */
-
+/* CREATE author */
 router.post("/", authorsController.createAuthor);
+
+/* GET single author by id */
+router.get("/:id", authorsController.getSingleAuthor);
+
+/* UPDATE author by id */
+router.put("/:id", authorsController.updateAuthor);
 
 module.exports = router;
