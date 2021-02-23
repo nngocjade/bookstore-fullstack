@@ -1,1 +1,9 @@
-"# cd-w10-tues-mongoose-bookstore-backend" 
+# Mongoose Bookstore Backend
+
+Created with love by: Jade
+
+# npm package used
+
+npx express-generator --no-view
+
+npm install mongoose
