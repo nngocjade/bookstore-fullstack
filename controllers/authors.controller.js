@@ -61,8 +61,30 @@ const updateAuthor = async (req, res) => {
   }
 };
 
+// DELETE AUTHOR BY ID
+const deleteAuthor = async (req, res) => {
+  try {
+    const author = await Author.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({
+      success: true,
+
+      data: author,
+
+      message: `Deleted author ${author.id}`,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: fail,
+
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   createAuthor,
   getSingleAuthor,
   updateAuthor,
+  deleteAuthor,
 };
