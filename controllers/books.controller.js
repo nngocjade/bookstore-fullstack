@@ -4,17 +4,13 @@ const Book = require("../models/book");
 const createBook = async (req, res) => {
   try {
     const { title, description, author } = req.body;
-
     const book = new Book({ title, description, author });
-
     await book.save();
-
+    const populatedBook = await Book.findById(book.id).populate("author");
     res.status(201).json({
       success: true,
-
-      data: book,
-
-      message: `Book ${book.title} created!`,
+      data: populatedBook,
+      message: `Book "${book.title}" created!`,
     });
   } catch (err) {
     res.status(400).json({
