@@ -20,6 +20,25 @@ const createAuthor = async (req, res) => {
   }
 };
 
+// GET ALL AUTHORS
+
+const getAllAuthors = async (req, res) => {
+  try {
+    const authors = await Author.find();
+
+    res.status(200).json({
+      success: true,
+      data: authors,
+      message: `Found all authors!`,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+
 // GET SINGLE AUTHOR BY ID
 const getSingleAuthor = async (req, res) => {
   try {
@@ -84,6 +103,7 @@ const deleteAuthor = async (req, res) => {
 
 module.exports = {
   createAuthor,
+  getAllAuthors,
   getSingleAuthor,
   updateAuthor,
   deleteAuthor,

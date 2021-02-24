@@ -7,6 +7,9 @@ const authorsController = require("../controllers/authors.controller");
 /* CREATE author */
 router.post("/", authorsController.createAuthor);
 
+/* GET all authors */
+router.get("/", authorsController.getAllAuthors);
+
 /* GET single author by id */
 router.get("/:id", authorsController.getSingleAuthor);
 
