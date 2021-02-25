@@ -3,10 +3,23 @@ const User = require("../models/user");
 // CREATE USER
 const createUser = async (req, res) => {
   try {
+    const { name, email, password, confirmPassword } = req.body;
+    if (!confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: `please confirm password`,
+      });
+    }
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        message: `password does not match!`,
+      });
+    }
     const user = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
+      name,
+      email,
+      password,
     });
 
     await user.save();
