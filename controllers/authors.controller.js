@@ -1,4 +1,5 @@
 const Author = require("../models/author");
+const Book = require("../models/book");
 
 // CREATE AUTHOR
 const createAuthor = async (req, res) => {
@@ -43,11 +44,11 @@ const getAllAuthors = async (req, res) => {
 const getSingleAuthor = async (req, res) => {
   try {
     const author = await Author.findById(req.params.id);
-
+    const books = await Book.find({ author: req.params.id });
     res.status(200).json({
       success: true,
-      data: author,
-      messages: `Author ${author.id} found!`,
+      data: { author, books },
+      messages: `Author ${author.name} found!`,
     });
   } catch (err) {
     res.status(400).json({
@@ -70,7 +71,7 @@ const updateAuthor = async (req, res) => {
     res.status(200).json({
       success: true,
       data: author,
-      message: `Author ${author.id} updated!`,
+      message: `Author ${author.name} updated!`,
     });
   } catch (err) {
     res.status(400).json({
@@ -90,7 +91,7 @@ const deleteAuthor = async (req, res) => {
 
       data: author,
 
-      message: `Deleted author ${author.id}`,
+      message: `Deleted author ${author.name}`,
     });
   } catch (err) {
     res.status(400).json({
