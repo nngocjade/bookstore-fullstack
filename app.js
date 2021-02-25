@@ -9,6 +9,7 @@ var usersRouter = require("./routes/users");
 const mongoose = require("mongoose");
 const authorsRouter = require("./routes/authors");
 const booksRouter = require("./routes/books");
+const genresRouter = require("./routes/genres");
 
 mongoose
   .connect("mongodb://localhost/test", {
@@ -34,5 +35,6 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/authors", authorsRouter);
 app.use("/books", booksRouter);
+app.use("/genres", genresRouter);
 
 module.exports = app;

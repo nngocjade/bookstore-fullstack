@@ -24,8 +24,9 @@ const createBook = async (req, res) => {
 // GET ALL BOOKS
 const getBooks = async (req, res) => {
   try {
-    const books = await Book.find({}).populate("author");
-
+    const books = await Book.find({})
+      .populate("author")
+      .populate("genres", "-_id -__v");
     res.status(200).json({
       success: true,
       data: books,
