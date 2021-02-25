@@ -7,3 +7,5 @@ Created with love by: Jade
 npx express-generator --no-view
 
 npm install mongoose
+
+npm install bcrypt
