@@ -8,9 +8,6 @@ const { loginRequired } = require("../middlewares/authentication");
 /* CREATE users */
 router.post("/", usersController.createUser);
 
-// /* GET single users */
-// router.get("/:id", usersController.getSingleUser);
-
 // /* GET current user by id */
 router.get("/me", loginRequired, usersController.getCurrentUser);
 
