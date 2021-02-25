@@ -1,9 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const router = express.Router();
+
+const usersController = require("../controllers/users.controller");
+
+/* CREATE author */
+router.post("/", usersController.createUser);
+
+// /* GET all authors */
+// router.get("/", authorsController.getAllAuthors);
+
+// /* GET single author by id */
+// router.get("/:id", authorsController.getSingleAuthor);
+
+// /* UPDATE author by id */
+// router.put("/:id", authorsController.updateAuthor);
+
+// /* DELETE author by id */
+// router.delete("/:id", authorsController.deleteAuthor);
 
 module.exports = router;

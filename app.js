@@ -5,11 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+
 const mongoose = require("mongoose");
 const authorsRouter = require("./routes/authors");
 const booksRouter = require("./routes/books");
 const genresRouter = require("./routes/genres");
+const usersRouter = require("./routes/users");
 
 mongoose
   .connect("mongodb://localhost/test", {
