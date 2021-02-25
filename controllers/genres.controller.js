@@ -26,7 +26,7 @@ const getAllGenres = async (req, res) => {
     res.status(200).json({
       success: true,
       data: genres,
-      message: `Found all authors!`,
+      message: `Found all genres!`,
     });
   } catch (err) {
     res.status(400).json({
