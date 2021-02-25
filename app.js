@@ -11,7 +11,7 @@ const authorsRouter = require("./routes/authors");
 const booksRouter = require("./routes/books");
 const genresRouter = require("./routes/genres");
 const usersRouter = require("./routes/users");
-const loginRouter = require("./routes/login");
+const authRouter = require("./routes/auth");
 
 mongoose
   .connect("mongodb://localhost/test", {
@@ -38,6 +38,6 @@ app.use("/users", usersRouter);
 app.use("/authors", authorsRouter);
 app.use("/books", booksRouter);
 app.use("/genres", genresRouter);
-app.use("/login", loginRouter);
+app.use("/auth", authRouter);
 
 module.exports = app;
