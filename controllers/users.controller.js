@@ -59,7 +59,45 @@ const getSingleUser = async (req, res) => {
   }
 };
 
+// GET CURRENT USER
+const getCurrentUser = async (req, res, next) => {
+  const userId = req.userId;
+  const user = await User.findById(userId);
+  if (!user)
+    return res.status(400).json({
+      success: false,
+      error: "User not found!",
+    });
+  return res.status(200).json({
+    success: true,
+    data: user,
+    message: "Get current user successfully!",
+  });
+};
+
+// UPDATE USER PROFILE
+const updateProfile = async (req, res, next) => {
+  const userId = req.userId;
+  try {
+    const user = await User.findByIdAndUpdate(req.userId, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      data: user,
+      message: `User ${user.name} updated!`,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   createUser,
   getSingleUser,
+  getCurrentUser,
+  updateProfile,
 };

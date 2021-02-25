@@ -3,18 +3,19 @@ const express = require("express");
 const router = express.Router();
 
 const usersController = require("../controllers/users.controller");
+const { loginRequired } = require("../middlewares/authentication");
 
 /* CREATE users */
 router.post("/", usersController.createUser);
 
-/* GET all users */
-router.get("/:id", usersController.getSingleUser);
+// /* GET single users */
+// router.get("/:id", usersController.getSingleUser);
 
-// /* GET single author by id */
-// router.get("/:id", authorsController.getSingleAuthor);
+// /* GET current user by id */
+router.get("/me", loginRequired, usersController.getCurrentUser);
 
-// /* UPDATE author by id */
-// router.put("/:id", authorsController.updateAuthor);
+// /* UPDATE user by id */
+router.put("/me", loginRequired, usersController.updateProfile);
 
 // /* DELETE author by id */
 // router.delete("/:id", authorsController.deleteAuthor);
