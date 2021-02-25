@@ -17,9 +17,11 @@ const loginWithEmail = async (req, res, next) => {
       error: "Wrong email or password",
     });
 
+  accessToken = await user.generateToken();
+
   res.status(200).json({
     success: true,
-
+    token: accessToken,
     message: `Logged in successfully!`,
   });
 };

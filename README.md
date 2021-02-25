@@ -9,3 +9,7 @@ npx express-generator --no-view
 npm install mongoose
 
 npm install bcrypt
+
+npm install dotenv
+
+npm install jsonwebtoken

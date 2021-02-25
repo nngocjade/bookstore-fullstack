@@ -16,6 +16,7 @@ const createUser = async (req, res) => {
         message: `password does not match!`,
       });
     }
+
     const user = new User({
       name,
       email,
@@ -24,9 +25,12 @@ const createUser = async (req, res) => {
 
     await user.save();
 
+    accessToken = await user.generateToken();
+
     res.status(201).json({
       success: true,
       data: user,
+      token: accessToken,
       message: `User ${user.name} created!`,
     });
   } catch (err) {
