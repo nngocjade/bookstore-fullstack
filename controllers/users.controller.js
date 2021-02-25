@@ -41,6 +41,25 @@ const createUser = async (req, res) => {
   }
 };
 
+// GET SINGLE USER BY ID
+const getSingleUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    res.status(200).json({
+      success: true,
+      data: user,
+      messages: `User ${user.name} found!`,
+    });
+  } catch (err) {
+    res.status(400).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
+
 module.exports = {
   createUser,
+  getSingleUser,
 };

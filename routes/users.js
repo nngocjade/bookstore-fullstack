@@ -4,11 +4,11 @@ const router = express.Router();
 
 const usersController = require("../controllers/users.controller");
 
-/* CREATE author */
+/* CREATE users */
 router.post("/", usersController.createUser);
 
-// /* GET all authors */
-// router.get("/", authorsController.getAllAuthors);
+/* GET all users */
+router.get("/:id", usersController.getSingleUser);
 
 // /* GET single author by id */
 // router.get("/:id", authorsController.getSingleAuthor);
