@@ -1,8 +1,8 @@
-# Mongoose Bookstore Backend
+# Bookstore FullStack
 
 Created with love by: Jade
 
-# npm package used
+# Backend npm package used
 
 npx express-generator --no-view
 
